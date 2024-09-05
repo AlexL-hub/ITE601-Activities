@@ -1,27 +1,26 @@
-<?php 
+<?php
 
-class StudentGrade {
+class Payroll {
+    private string $fname = "loraez";
+    private string $lname = "alex";
+    private float $tax = 50;
+    private float $salary = 100;
 
-    private string $firstname = "Alex";
-    private string $lastname = "Loraez";
-    private int $prelim = 70;
-    private int $midterm = 80;
-    private int $endterm = 90;
-
-    public function getEmployeeName() {
-      return $this->lastname . ", " . $this->firstname;
-       
+    public function computeNet(): float {
+        return $this->salary - $this->tax;
     }
 
-    public function computeNet() : string {
-        $ave = $this->prelim + $this->midterm + $this->endterm;
-        return $ave / 3;
+    public function getEmployeeName(): string {
+        return $this->fname . " " . $this->lname;
+    }
+
+    public function displayNet(): string {
+        return number_format($this->computeNet(), 2);
     }
 }
 
-$studentGrade = new StudentGrade();
+$payroll = new Payroll();
+echo "Employee Name: " . $payroll->getEmployeeName() . "<br/>";
+echo "Net: $" . $payroll->displayNet();
 
-echo "Employee Name : " . $studentGrade->getEmployeeName() . "\n";
-echo "<br/>";
-echo "net : " . $studentGrade->computeNet();
 ?>
